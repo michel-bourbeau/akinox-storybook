@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { color, typography } from './shared/styles';
-import { glow } from './shared/animation';
-import { Icon } from './Icon';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { color, typography } from './shared/styles'
+import { glow } from './shared/animation'
+import { Icon } from './Icon'
 
 export const sizes = {
   large: 40,
   medium: 28,
   small: 20,
   tiny: 16,
-};
+}
 
 const Image = styled.div`
-  background: ${props => (!props.loading ? 'transparent' : color.light)};
+  background: ${(props) => (!props.loading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
   vertical-align: top;
@@ -24,7 +24,7 @@ const Image = styled.div`
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
 
-  ${props =>
+  ${(props) =>
     props.size === 'tiny' &&
     css`
       height: ${sizes.tiny}px;
@@ -32,7 +32,7 @@ const Image = styled.div`
       line-height: ${sizes.tiny}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'small' &&
     css`
       height: ${sizes.small}px;
@@ -40,7 +40,7 @@ const Image = styled.div`
       line-height: ${sizes.small}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'large' &&
     css`
       height: ${sizes.large}px;
@@ -48,7 +48,7 @@ const Image = styled.div`
       line-height: ${sizes.large}px;
     `}
 
-  ${props =>
+  ${(props) =>
     !props.src &&
     css`
       background: ${!props.loading && '#37D5D3'};
@@ -72,7 +72,7 @@ const Image = styled.div`
     fill: ${color.medium};
     animation: ${glow} 1.5s ease-in-out infinite;
   }
-`;
+`
 
 // prettier-ignore
 const Initial = styled.div`
@@ -104,28 +104,28 @@ const Initial = styled.div`
  *   the avatar or in a tooltip.
  **/
 export function Avatar({ loading, username, src, size, ...props }) {
-  let avatarFigure = <Icon icon="useralt" />;
-  const a11yProps = {};
+  let avatarFigure = <Icon icon="useralt" />
+  const a11yProps = {}
 
   if (loading) {
-    a11yProps['aria-busy'] = true;
-    a11yProps['aria-label'] = 'Loading avatar ...';
+    a11yProps['aria-busy'] = true
+    a11yProps['aria-label'] = 'Loading avatar ...'
   } else if (src) {
-    avatarFigure = <img src={src} alt={username} />;
+    avatarFigure = <img src={src} alt={username} />
   } else {
-    a11yProps['aria-label'] = username;
+    a11yProps['aria-label'] = username
     avatarFigure = (
       <Initial size={size} aria-hidden="true">
         {username.substring(0, 1)}
       </Initial>
-    );
+    )
   }
 
   return (
     <Image size={size} loading={loading} src={src} {...a11yProps} {...props}>
       {avatarFigure}
     </Image>
-  );
+  )
 }
 
 Avatar.propTypes = {
@@ -145,11 +145,11 @@ Avatar.propTypes = {
    Avatar comes in four sizes. In most cases, you’ll be fine with `medium`. 
   */
   size: PropTypes.oneOf(Object.keys(sizes)),
-};
+}
 
 Avatar.defaultProps = {
   loading: false,
   username: 'loading',
   src: null,
   size: 'medium',
-};
+}

@@ -1,23 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import { action } from '@storybook/addon-actions';
+import React from 'react'
+import styled from 'styled-components'
+import { action } from '@storybook/addon-actions'
 
-import { Icon } from './Icon';
-import { Link } from './Link';
-import { StoryLinkWrapper } from './StoryLinkWrapper';
+import { Icon } from './Icon'
+import { Link } from './Link'
+import { StoryLinkWrapper } from './StoryLinkWrapper'
 
 const CustomLink = styled(Link)`
   && {
     color: red;
   }
-`;
+`
 
-const onLinkClick = action('onLinkClick');
+const onLinkClick = action('onLinkClick')
 
 export default {
   title: 'Design System/Link',
   component: Link,
-};
+}
 
 export const All = (args) => (
   <div>
@@ -40,7 +40,11 @@ export const All = (args) => (
       With icon in front
     </Link>
     <br />
-    <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
+    <Link
+      containsIcon
+      href="https://learnstorybook.com"
+      aria-label="Toggle side bar"
+    >
       <Icon icon="sidebar" aria-hidden />
     </Link>
     <br />
@@ -60,12 +64,20 @@ export const All = (args) => (
       is actually a button
     </Link>
     <br />
-    <Link tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
+    <Link
+      tertiary
+      LinkWrapper={StoryLinkWrapper}
+      href="http://storybook.js.org"
+    >
       has a LinkWrapper like GatsbyLink or NextLink
     </Link>
     <br />
-    <CustomLink tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
+    <CustomLink
+      tertiary
+      LinkWrapper={StoryLinkWrapper}
+      href="http://storybook.js.org"
+    >
       has a LinkWrapper like GatsbyLink or NextLink with custom styling
     </CustomLink>
   </div>
-);
+)
